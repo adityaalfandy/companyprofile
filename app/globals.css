@@ -1,26 +1,299 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ========================================
+   PASSOLVING Design System
+   Brand: Navy · Teal · Gold · Magenta
+   ======================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand Colors */
+  --color-navy-50: #E8EDF4;
+  --color-navy-100: #C5D1E3;
+  --color-navy-200: #8BA3C7;
+  --color-navy-400: #3D6299;
+  --color-navy-500: #12294B;
+  --color-navy-800: #0D1E38;
+  --color-navy-900: #070F1C;
+
+  --color-teal-50: #E6F7F6;
+  --color-teal-100: #B3ECEA;
+  --color-teal-500: #0E9A93;
+  --color-teal-700: #0A7A74;
+
+  --color-gold-50: #FEF7E0;
+  --color-gold-100: #FBE9A3;
+  --color-gold-500: #F2B705;
+
+  --color-magenta-500: #EC1E79;
+
+  --color-neutral-50: #F8FAFB;
+  --color-neutral-100: #F1F4F7;
+  --color-neutral-200: #E2E8EE;
+  --color-neutral-300: #CBD5E0;
+  --color-neutral-500: #7A8BA0;
+  --color-neutral-700: #3D4F63;
+  --color-neutral-900: #1A2332;
+
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-dark: #1DA851;
+
+  /* Fonts */
+  --font-heading: var(--font-plus-jakarta-sans);
+  --font-body: var(--font-inter);
+
+  /* Shadows (navy-tinted) */
+  --shadow-sm: 0 1px 2px rgba(18, 41, 75, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(18, 41, 75, 0.07), 0 2px 4px -2px rgba(18, 41, 75, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(18, 41, 75, 0.08), 0 4px 6px -4px rgba(18, 41, 75, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(18, 41, 75, 0.10), 0 8px 10px -6px rgba(18, 41, 75, 0.05);
+  --shadow-2xl: 0 25px 50px -12px rgba(18, 41, 75, 0.15);
+  --shadow-glow: 0 0 30px rgba(14, 154, 147, 0.15);
+
+  /* Animations */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================================
+   Base Styles
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-neutral-700);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  color: var(--color-navy-500);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   Skip to Content (Accessibility)
+   ======================================== */
+
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--color-teal-500);
+  color: white;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ========================================
+   Scroll Animation Classes
+   ======================================== */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll.delay-1 { transition-delay: 100ms; }
+.animate-on-scroll.delay-2 { transition-delay: 200ms; }
+.animate-on-scroll.delay-3 { transition-delay: 300ms; }
+.animate-on-scroll.delay-4 { transition-delay: 400ms; }
+
+.animate-fade-in {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.animate-fade-in.is-visible {
+  opacity: 1;
+}
+
+.animate-scale-up {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.animate-scale-up.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========================================
+   Logo Marquee
+   ======================================== */
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================
+   Glassmorphism
+   ======================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   Navbar backdrop
+   ======================================== */
+
+.navbar-blur {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 238, 0.6);
+}
+
+.navbar-transparent {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+/* ========================================
+   Custom Scrollbar
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500);
+}
+
+/* ========================================
+   Gradient Backgrounds
+   ======================================== */
+
+.bg-hero-gradient {
+  background: linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-900) 60%, #0a1628 100%);
+}
+
+.bg-cta-gradient {
+  background: linear-gradient(135deg, var(--color-navy-800) 0%, #0c3a3a 100%);
+}
+
+.bg-grid-pattern {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* ========================================
+   Floating WhatsApp pulse
+   ======================================== */
+
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.wa-pulse {
+  animation: wa-pulse 3s ease-in-out infinite;
+}
+
+/* ========================================
+   Counter animation
+   ======================================== */
+
+@keyframes count-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   Accessibility — Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .animate-on-scroll,
+  .animate-fade-in,
+  .animate-scale-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   Selection Color
+   ======================================== */
+
+::selection {
+  background: var(--color-teal-500);
+  color: white;
 }
