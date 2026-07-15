@@ -4,68 +4,60 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center bg-hero-gradient bg-grid-pattern overflow-hidden">
-      {/* Ambient glow effects */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-magenta-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <section className="relative min-h-screen flex items-center bg-hero-aurora bg-dot-grid overflow-hidden">
+      {/* Aurora glow orbs */}
+      <div className="absolute top-1/3 left-[15%] w-[600px] h-[600px] bg-teal-500/8 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-[20%] w-[400px] h-[400px] bg-magenta-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-accent/4 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-[1280px] px-6 py-32 md:py-40 text-center z-10">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-teal-100 mb-8 animate-[fadeUp_0.6s_var(--ease-out)_0.2s_both]">
-          <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
-          Training · Consulting · Research
+      <div className="relative mx-auto max-w-[1200px] px-8 py-32 md:py-40 z-10">
+        {/* Overline eyebrow */}
+        <div className="animate-[fadeUp_0.6s_var(--ease-out)_0.2s_both]">
+          <span className="overline text-teal-500 tracking-[0.12em]">
+            Training · Consulting · Research
+          </span>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight animate-[fadeUp_0.8s_var(--ease-out)_0.3s_both]">
-          Agility &
-          <br />
-          <span className="bg-gradient-to-r from-teal-500 via-teal-100 to-gold-500 bg-clip-text text-transparent">
-            Transformation
+        {/* Letter-spaced signature headline */}
+        <h1 className="mt-6 animate-[fadeUp_0.8s_var(--ease-out)_0.35s_both]">
+          <span className="text-spaced-hero text-white text-[clamp(28px,5vw,56px)] leading-[1.1] block">
+            A G I L I T Y
+          </span>
+          <span className="text-spaced-hero text-[clamp(28px,5vw,56px)] leading-[1.1] block mt-1" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="text-white/60">&</span>{" "}
+            <span className="bg-gradient-to-r from-teal-500 via-gold-500 to-magenta-500 bg-clip-text text-transparent">
+              T R A N S F O R M A T I O N
+            </span>
           </span>
         </h1>
 
         {/* Sub-headline */}
-        <p className="mt-6 text-base md:text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed animate-[fadeUp_0.8s_var(--ease-out)_0.5s_both]">
+        <p className="mt-8 text-[16px] md:text-[18px] text-white/60 max-w-xl leading-relaxed animate-[fadeUp_0.7s_var(--ease-out)_0.5s_both]" style={{ fontFamily: "var(--font-body)" }}>
           Pioneer in Agility Assessment & National Soft Skill Certification.
           <br className="hidden md:block" />
           Determine for Execution Deliveries.
         </p>
 
-        {/* CTAs */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-[fadeUp_0.6s_var(--ease-out)_0.7s_both]">
-          <Link
-            href="/kontak"
-            className="inline-flex items-center gap-2 rounded-xl bg-teal-500 px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-200 hover:bg-teal-700 hover:shadow-glow hover:-translate-y-0.5 w-full sm:w-auto justify-center"
-          >
-            Mulai Diskusi
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {/* CTAs — navy primary + gold accent */}
+        <div className="mt-10 flex flex-col sm:flex-row items-start gap-4 animate-[fadeUp_0.6s_var(--ease-out)_0.65s_both]">
+          <Link href="/kontak" className="btn btn-accent px-8 py-3.5 text-[16px] shadow-md w-full sm:w-auto">
+            Discovery Session
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
             </svg>
           </Link>
-          <Link
-            href="/framework"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:bg-white/10 hover:border-white/30 w-full sm:w-auto justify-center"
-          >
+          <Link href="/framework" className="btn btn-secondary border-white/15 text-white/80 hover:bg-white/8 hover:border-white/25 hover:text-white px-8 py-3.5 text-[16px] w-full sm:w-auto">
             Lihat Framework Kami
           </Link>
         </div>
 
         {/* Scroll hint */}
-        <div className="mt-16 md:mt-24 animate-[fadeUp_0.6s_var(--ease-out)_1s_both]">
-          <div className="w-6 h-10 rounded-full border-2 border-white/20 mx-auto flex justify-center">
-            <div className="w-1 h-2.5 bg-white/40 rounded-full mt-2 animate-bounce" />
+        <div className="mt-20 md:mt-28 animate-[fadeUp_0.5s_var(--ease-out)_1s_both]">
+          <div className="w-5 h-9 rounded-full border-[1.5px] border-white/15 flex justify-center">
+            <div className="w-1 h-2 bg-white/30 rounded-full mt-2 animate-bounce" />
           </div>
         </div>
       </div>
-
-      {/* Fade into next section */}
-      <style jsx>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </section>
   );
 }

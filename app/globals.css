@@ -1,65 +1,112 @@
 @import "tailwindcss";
 
-/* ========================================
-   PASSOLVING Design System
-   Brand: Navy · Teal · Gold · Magenta
-   ======================================== */
+/* ============================================================
+   PASSOLVING Design System v2.0
+   Based on: design.md — "clarity before decoration"
+   Vibe: authoritative, data-grounded, calm-confident, quietly progressive
+   ============================================================ */
 
 @theme inline {
-  /* Brand Colors */
-  --color-navy-50: #E8EDF4;
-  --color-navy-100: #C5D1E3;
-  --color-navy-200: #8BA3C7;
-  --color-navy-400: #3D6299;
-  --color-navy-500: #12294B;
-  --color-navy-800: #0D1E38;
-  --color-navy-900: #070F1C;
+  /* ── Brand Colors ── */
+  --color-navy-900: #0B1633;
+  --color-navy-800: #10224E;
+  --color-navy-700: #16306B;
+  --color-navy-600: #1E3F8C;
+  --color-navy-50: #E8EDF8;
 
-  --color-teal-50: #E6F7F6;
-  --color-teal-100: #B3ECEA;
-  --color-teal-500: #0E9A93;
-  --color-teal-700: #0A7A74;
+  --color-teal-600: #0B8E88;
+  --color-teal-500: #0EA5A0;
+  --color-teal-100: #DFF6F4;
 
-  --color-gold-50: #FEF7E0;
-  --color-gold-100: #FBE9A3;
-  --color-gold-500: #F2B705;
+  --color-gold-600: #D98F00;
+  --color-gold-500: #F2A900;
+  --color-gold-100: #FDEED0;
 
-  --color-magenta-500: #EC1E79;
+  --color-magenta-600: #C21569;
+  --color-magenta-500: #E8127A;
 
-  --color-neutral-50: #F8FAFB;
-  --color-neutral-100: #F1F4F7;
-  --color-neutral-200: #E2E8EE;
-  --color-neutral-300: #CBD5E0;
-  --color-neutral-500: #7A8BA0;
-  --color-neutral-700: #3D4F63;
-  --color-neutral-900: #1A2332;
+  --color-blue-accent: #2D4FD6;
 
-  --color-success: #10B981;
-  --color-error: #EF4444;
+  /* ── Canvas ── */
+  --color-canvas: #F5F7FA;
+  --color-canvas-muted: #EEF1F6;
+  --color-canvas-inverse: #0B1633;
+
+  /* ── Surface ── */
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-sunken: #F0F2F7;
+  --color-surface-overlay: rgba(11, 22, 51, 0.6);
+  --color-surface-inverse: #10224E;
+
+  /* ── Ink (Text) ── */
+  --color-ink-900: #0B1633;
+  --color-ink-700: #33415C;
+  --color-ink-500: #64748B;
+  --color-ink-300: #9AA5B8;
+  --color-ink-inverse: #FFFFFF;
+  --color-ink-muted: rgba(255,255,255,0.72);
+  --color-ink-brand: #0B8E88;
+  --color-ink-link: #2D4FD6;
+
+  /* ── Semantic ── */
+  --color-success-bg: #E5F7EF;
+  --color-success-fg: #0F8A57;
+  --color-success-border: #BCEBD3;
+  --color-warning-bg: #FDF3DC;
+  --color-warning-fg: #B4770A;
+  --color-warning-border: #F6DFA0;
+  --color-error-bg: #FDEAEC;
+  --color-error-fg: #C11C2A;
+  --color-error-border: #F5C1C6;
+  --color-info-bg: #E9EEFC;
+  --color-info-fg: #2D4FD6;
+  --color-info-border: #C4D0F5;
+
+  /* ── Hairline / Borders ── */
+  --color-border-subtle: #E2E6ED;
+  --color-border-default: #CBD2DE;
+  --color-border-strong: #9AA5B8;
+  --color-border-brand: #0EA5A0;
+  --color-border-focus: #2D4FD6;
+  --color-divider: #E2E6ED;
+
+  /* ── Legacy aliases (for compatibility) ── */
+  --color-neutral-50: #F5F7FA;
+  --color-neutral-100: #EEF1F6;
+  --color-neutral-200: #E2E6ED;
+  --color-neutral-300: #CBD2DE;
+  --color-neutral-400: #9AA5B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-700: #33415C;
+  --color-neutral-900: #0B1633;
+
   --color-whatsapp: #25D366;
   --color-whatsapp-dark: #1DA851;
 
-  /* Fonts */
-  --font-heading: var(--font-plus-jakarta-sans);
+  /* ── Fonts ── */
+  --font-display: var(--font-poppins);
   --font-body: var(--font-inter);
 
-  /* Shadows (navy-tinted) */
-  --shadow-sm: 0 1px 2px rgba(18, 41, 75, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(18, 41, 75, 0.07), 0 2px 4px -2px rgba(18, 41, 75, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(18, 41, 75, 0.08), 0 4px 6px -4px rgba(18, 41, 75, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(18, 41, 75, 0.10), 0 8px 10px -6px rgba(18, 41, 75, 0.05);
-  --shadow-2xl: 0 25px 50px -12px rgba(18, 41, 75, 0.15);
-  --shadow-glow: 0 0 30px rgba(14, 154, 147, 0.15);
+  /* ── Elevation / Shadows (navy-tinted) ── */
+  --shadow-xs: 0 1px 2px rgba(11, 22, 51, 0.06);
+  --shadow-sm: 0 2px 8px rgba(11, 22, 51, 0.08);
+  --shadow-md: 0 8px 24px rgba(11, 22, 51, 0.10);
+  --shadow-lg: 0 16px 40px rgba(11, 22, 51, 0.14);
+  --shadow-focus: 0 0 0 4px rgba(45, 79, 214, 0.20);
+  --shadow-inverse: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-glow-teal: 0 0 40px rgba(14, 165, 160, 0.15);
+  --shadow-glow-gold: 0 0 40px rgba(242, 169, 0, 0.12);
 
-  /* Animations */
+  /* ── Easing ── */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ========================================
+/* ============================================================
    Base Styles
-   ======================================== */
+   ============================================================ */
 
 *,
 *::before,
@@ -74,23 +121,69 @@ html {
 }
 
 body {
-  background: #ffffff;
-  color: var(--color-neutral-700);
-  font-family: var(--font-body), system-ui, sans-serif;
-  line-height: 1.7;
+  background: var(--color-canvas);
+  color: var(--color-ink-700);
+  font-family: var(--font-body), 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
+/* ── Typography Hierarchy ── */
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), system-ui, sans-serif;
-  color: var(--color-navy-500);
+  font-family: var(--font-display), 'Poppins', system-ui, sans-serif;
+  color: var(--color-ink-900);
   line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Hero Display: 64px / 700 / -0.02em */
+.text-hero-display {
+  font-family: var(--font-display), 'Poppins', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
-/* ========================================
-   Skip to Content (Accessibility)
-   ======================================== */
+/* Display: 48px / 700 / -0.015em */
+.text-display {
+  font-family: var(--font-display), 'Poppins', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+/* Overline: 13px / 600 / 0.12em / uppercase */
+.overline {
+  font-family: var(--font-display), 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Micro: 11px / 500 / 0.04em / uppercase */
+.micro {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Letter-spaced hero headline (signature style) */
+.text-spaced-hero {
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ── Skip to Content ── */
 
 .skip-to-content {
   position: absolute;
@@ -99,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%);
   z-index: 9999;
   padding: 12px 24px;
-  background: var(--color-teal-500);
+  background: var(--color-navy-800);
   color: white;
   border-radius: 0 0 8px 8px;
   font-weight: 600;
@@ -110,14 +203,14 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
 }
 
-/* ========================================
-   Scroll Animation Classes
-   ======================================== */
+/* ============================================================
+   Scroll Animations
+   ============================================================ */
 
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
 .animate-on-scroll.is-visible {
@@ -129,30 +222,27 @@ h1, h2, h3, h4, h5, h6 {
 .animate-on-scroll.delay-2 { transition-delay: 200ms; }
 .animate-on-scroll.delay-3 { transition-delay: 300ms; }
 .animate-on-scroll.delay-4 { transition-delay: 400ms; }
+.animate-on-scroll.delay-5 { transition-delay: 500ms; }
 
 .animate-fade-in {
   opacity: 0;
   transition: opacity 0.6s var(--ease-out);
 }
-
-.animate-fade-in.is-visible {
-  opacity: 1;
-}
+.animate-fade-in.is-visible { opacity: 1; }
 
 .animate-scale-up {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.96);
   transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
-
 .animate-scale-up.is-visible {
   opacity: 1;
   transform: scale(1);
 }
 
-/* ========================================
-   Logo Marquee
-   ======================================== */
+/* ============================================================
+   Marquee
+   ============================================================ */
 
 @keyframes marquee {
   0% { transform: translateX(0); }
@@ -161,7 +251,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .marquee-track {
   display: flex;
-  animation: marquee 35s linear infinite;
+  animation: marquee 40s linear infinite;
   width: max-content;
 }
 
@@ -169,33 +259,34 @@ h1, h2, h3, h4, h5, h6 {
   animation-play-state: paused;
 }
 
-/* ========================================
-   Glassmorphism
-   ======================================== */
+/* ============================================================
+   Surface & Glass
+   ============================================================ */
 
 .glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* ========================================
-   Navbar backdrop
-   ======================================== */
+/* ============================================================
+   Navbar
+   ============================================================ */
 
-.navbar-blur {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 238, 0.6);
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-xs);
 }
 
 .navbar-transparent {
@@ -203,51 +294,189 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid transparent;
 }
 
-/* ========================================
-   Custom Scrollbar
-   ======================================== */
+/* ============================================================
+   Hero Aurora Gradient
+   ============================================================ */
 
-::-webkit-scrollbar {
-  width: 8px;
+.bg-hero-aurora {
+  background: var(--color-navy-900);
+  position: relative;
+  overflow: hidden;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-neutral-50);
+.bg-hero-aurora::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 60%, rgba(14, 165, 160, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(232, 18, 122, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(45, 79, 214, 0.08) 0%, transparent 60%);
+  animation: auroraShift 12s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-300);
-  border-radius: 4px;
+@keyframes auroraShift {
+  0%   { opacity: 0.7; transform: scale(1) translateY(0); }
+  50%  { opacity: 1;   transform: scale(1.05) translateY(-10px); }
+  100% { opacity: 0.8; transform: scale(1) translateY(5px); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-500);
+/* Subtle dot grid */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* ========================================
-   Gradient Backgrounds
-   ======================================== */
-
-.bg-hero-gradient {
-  background: linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-900) 60%, #0a1628 100%);
+/* Section hero for sub-pages */
+.bg-section-hero {
+  background: var(--color-canvas-inverse);
 }
 
+/* CTA gradient */
 .bg-cta-gradient {
-  background: linear-gradient(135deg, var(--color-navy-800) 0%, #0c3a3a 100%);
+  background: linear-gradient(135deg, var(--color-navy-900) 0%, #0d2a4a 50%, #0a3340 100%);
 }
 
-.bg-grid-pattern {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
-  background-size: 40px 40px;
+/* ============================================================
+   Card Styles (from design.md)
+   ============================================================ */
+
+.card-base {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
 }
 
-/* ========================================
-   Floating WhatsApp pulse
-   ======================================== */
+.card-elevated {
+  background: var(--color-surface-raised);
+  border: none;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.card-inverse {
+  background: var(--color-surface-inverse);
+  color: var(--color-ink-inverse);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow-inverse);
+}
+
+/* ============================================================
+   Button Styles (from design.md)
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display), 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 12px 24px;
+  transition: all 150ms ease-out;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-navy-800);
+  color: var(--color-ink-inverse);
+  border: none;
+  box-shadow: var(--shadow-xs);
+}
+.btn-primary:hover {
+  background: var(--color-navy-900);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-accent {
+  background: var(--color-gold-500);
+  color: var(--color-navy-900);
+  border: none;
+  box-shadow: var(--shadow-xs);
+}
+.btn-accent:hover {
+  background: var(--color-gold-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow-gold);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-navy-800);
+  border: 1.5px solid var(--color-border-default);
+}
+.btn-secondary:hover {
+  background: var(--color-canvas-muted);
+  border-color: var(--color-border-strong);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-teal-600);
+  border: none;
+  padding: 8px 12px;
+}
+.btn-ghost:hover {
+  background: rgba(11, 22, 51, 0.04);
+}
+
+/* ============================================================
+   Badge & Tag System (from design.md)
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-neutral { background: var(--color-canvas-muted); color: var(--color-ink-700); }
+.badge-brand   { background: var(--color-teal-100); color: var(--color-teal-600); }
+.badge-gold    { background: var(--color-gold-100); color: var(--color-gold-600); }
+.badge-success { background: var(--color-success-bg); color: var(--color-success-fg); }
+.badge-error   { background: var(--color-error-bg); color: var(--color-error-fg); }
+
+/* Tag for PASS Framework pillars */
+.tag-pillar {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 16px;
+  font-family: var(--font-display), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   WhatsApp Pulse
+   ============================================================ */
 
 @keyframes wa-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  0%  { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
   70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
   100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
@@ -256,18 +485,60 @@ h1, h2, h3, h4, h5, h6 {
   animation: wa-pulse 3s ease-in-out infinite;
 }
 
-/* ========================================
-   Counter animation
-   ======================================== */
+/* ============================================================
+   Animated gradient border (Gen Z touch)
+   ============================================================ */
 
-@keyframes count-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes gradientRotate {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
 }
 
-/* ========================================
-   Accessibility — Reduced Motion
-   ======================================== */
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    var(--color-teal-500),
+    var(--color-gold-500),
+    var(--color-magenta-500),
+    var(--color-teal-500)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  z-index: -1;
+  animation: gradientRotate 4s linear infinite;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* ============================================================
+   Scrollbar
+   ============================================================ */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-canvas); }
+::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-border-strong); }
+
+/* ============================================================
+   Selection
+   ============================================================ */
+
+::selection {
+  background: var(--color-teal-500);
+  color: white;
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -276,24 +547,34 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  .marquee-track {
-    animation: none;
-  }
-
+  .marquee-track { animation: none; }
   .animate-on-scroll,
   .animate-fade-in,
   .animate-scale-up {
     opacity: 1;
     transform: none;
   }
+  .bg-hero-aurora::before {
+    animation: none;
+    opacity: 0.8;
+  }
 }
 
-/* ========================================
-   Selection Color
-   ======================================== */
+/* ============================================================
+   Keyframes
+   ============================================================ */
 
-::selection {
-  background: var(--color-teal-500);
-  color: white;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
 }

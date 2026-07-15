@@ -32,15 +32,9 @@ export default function TestimonialCarousel() {
   const [active, setActive] = useState(0);
   const ref = useScrollAnimation();
 
-  const next = useCallback(() => {
-    setActive((p) => (p + 1) % testimonials.length);
-  }, []);
+  const next = useCallback(() => setActive((p) => (p + 1) % testimonials.length), []);
+  const prev = useCallback(() => setActive((p) => (p - 1 + testimonials.length) % testimonials.length), []);
 
-  const prev = useCallback(() => {
-    setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
-  }, []);
-
-  /* Auto-play */
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
@@ -51,47 +45,41 @@ export default function TestimonialCarousel() {
   return (
     <Section>
       <SectionHeader
-        badge="Testimoni"
-        title="Apa Kata Pemimpin Tentang PASS"
+        badge="What Leaders Say about PASS"
+        title="Testimoni Klien"
         subtitle="Hasil nyata dari kolaborasi dengan organisasi lintas industri."
       />
 
-      <div ref={ref} className="animate-on-scroll max-w-4xl mx-auto">
-        {/* Card */}
-        <div className="relative bg-neutral-50 rounded-3xl border border-neutral-200 p-8 md:p-12 min-h-[320px]">
-          {/* Quote mark */}
-          <div className="absolute top-6 left-8 text-7xl font-heading font-extrabold text-gold-500/20 leading-none select-none">
+      <div ref={ref} className="animate-on-scroll max-w-3xl mx-auto">
+        {/* Card-inverse for testimonials (as per design.md) */}
+        <div className="card-inverse p-8 md:p-12 min-h-[280px] relative">
+          {/* Gold quote mark */}
+          <div className="absolute top-6 right-8 text-[72px] leading-none text-gold-500/20 select-none" style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}>
             &ldquo;
           </div>
 
-          {/* Testimonial content — use key for transition */}
-          <div key={active} className="animate-[fadeIn_0.5s_ease-out]">
-            <blockquote className="relative z-10 text-lg md:text-xl text-navy-500 leading-relaxed font-medium mb-8 pt-6">
+          <div key={active} className="animate-[slideInRight_0.4s_ease-out]">
+            <blockquote className="relative z-10 text-[16px] md:text-[18px] text-white/90 leading-relaxed font-medium mb-8" style={{ fontFamily: "var(--font-body)" }}>
               {t.quote}
             </blockquote>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-navy-500 flex items-center justify-center text-white font-heading font-bold text-sm">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white font-bold text-[12px]" style={{ fontFamily: "var(--font-display)" }}>
                   {t.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
                 </div>
                 <div>
-                  <cite className="not-italic font-heading font-semibold text-navy-500 text-sm">
-                    {t.name}
-                  </cite>
-                  <p className="text-xs text-neutral-500">{t.role}</p>
+                  <cite className="not-italic font-semibold text-white text-[14px]" style={{ fontFamily: "var(--font-display)" }}>{t.name}</cite>
+                  <p className="text-[12px] text-white/40">{t.role}</p>
                 </div>
               </div>
 
-              {/* Badge */}
-              <div className="flex items-center gap-3 px-4 py-2 rounded-xl bg-gold-50 border border-gold-100">
-                <span className="text-2xl md:text-3xl font-heading font-extrabold text-gold-500">
+              {/* Gold badge — display font for numbers */}
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/8 border border-white/8">
+                <span className="text-[28px] font-bold text-gold-500 leading-none" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
                   {t.badge}
                 </span>
-                <span className="text-xs font-medium text-neutral-500">
-                  {t.badgeLabel}
-                </span>
+                <span className="text-[11px] font-medium text-white/50 uppercase tracking-wider">{t.badgeLabel}</span>
               </div>
             </div>
           </div>
@@ -99,49 +87,32 @@ export default function TestimonialCarousel() {
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-4 mt-8">
-          <button
-            onClick={prev}
-            aria-label="Testimoni sebelumnya"
-            className="w-10 h-10 rounded-full border border-neutral-200 bg-white text-neutral-500 hover:border-teal-500 hover:text-teal-500 transition-colors flex items-center justify-center"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button onClick={prev} aria-label="Sebelumnya"
+            className="w-9 h-9 rounded-lg border border-border-subtle bg-surface text-ink-500 hover:border-teal-600 hover:text-teal-600 transition-colors flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m15 18-6-6 6-6" />
             </svg>
           </button>
 
-          {/* Dots */}
           <div className="flex gap-2">
             {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Testimoni ${i + 1}`}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === active
-                    ? "bg-teal-500 w-8"
-                    : "bg-neutral-300 hover:bg-neutral-400"
-                }`}
+              <button key={i} onClick={() => setActive(i)} aria-label={`Testimoni ${i + 1}`}
+                className={`h-2 rounded-full transition-all duration-300
+                  ${i === active ? "bg-teal-600 w-7" : "bg-border-default w-2 hover:bg-ink-300"}`}
               />
             ))}
           </div>
 
-          <button
-            onClick={next}
-            aria-label="Testimoni berikutnya"
-            className="w-10 h-10 rounded-full border border-neutral-200 bg-white text-neutral-500 hover:border-teal-500 hover:text-teal-500 transition-colors flex items-center justify-center"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button onClick={next} aria-label="Berikutnya"
+            className="w-9 h-9 rounded-lg border border-border-subtle bg-surface text-ink-500 hover:border-teal-600 hover:text-teal-600 transition-colors flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m9 18 6-6-6-6" />
             </svg>
           </button>
         </div>
 
-        {/* Link to all */}
         <div className="text-center mt-6">
-          <a
-            href="/testimoni"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-500 hover:text-teal-700 transition-colors group"
-          >
+          <a href="/testimoni" className="btn-ghost inline-flex items-center gap-1.5 text-[14px] font-semibold text-teal-600 group">
             Lihat Semua Testimoni
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
@@ -149,13 +120,6 @@ export default function TestimonialCarousel() {
           </a>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateX(12px); }
-          to   { opacity: 1; transform: translateX(0); }
-        }
-      `}</style>
     </Section>
   );
 }

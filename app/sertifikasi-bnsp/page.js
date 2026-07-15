@@ -2,29 +2,18 @@
 
 import { useScrollAnimation } from "@/hooks/useAnimations";
 import { SectionHeader, Section, CTABanner } from "@/components/Section";
+import PageHero from "@/components/PageHero";
 
 const schemas = [
-  {
-    id: 1,
-    title: "Problem Solving",
+  { id: 1, title: "Problem Solving", borderColor: "border-t-teal-600",
     desc: "Sertifikasi kompetensi dalam mengidentifikasi, menganalisis, dan menyelesaikan masalah secara efektif dan sistematis.",
-    competencies: ["Identifikasi Masalah", "Analisis Akar Penyebab", "Pengembangan Solusi", "Implementasi & Evaluasi"],
-    color: "border-t-teal-500",
-  },
-  {
-    id: 2,
-    title: "Pengembangan Kepemimpinan",
+    competencies: ["Identifikasi Masalah", "Analisis Akar Penyebab", "Pengembangan Solusi", "Implementasi & Evaluasi"] },
+  { id: 2, title: "Pengembangan Kepemimpinan", borderColor: "border-t-gold-500",
     desc: "Sertifikasi kompetensi kepemimpinan yang mencakup kemampuan memimpin tim, pengambilan keputusan, dan pemberdayaan.",
-    competencies: ["Kepemimpinan Situasional", "Pengambilan Keputusan", "Pemberdayaan Tim", "Manajemen Konflik"],
-    color: "border-t-gold-500",
-  },
-  {
-    id: 3,
-    title: "Komunikasi Efektif",
+    competencies: ["Kepemimpinan Situasional", "Pengambilan Keputusan", "Pemberdayaan Tim", "Manajemen Konflik"] },
+  { id: 3, title: "Komunikasi Efektif", borderColor: "border-t-magenta-500",
     desc: "Sertifikasi kompetensi komunikasi profesional, termasuk presentasi, negosiasi, dan komunikasi lintas fungsi.",
-    competencies: ["Komunikasi Interpersonal", "Presentasi Efektif", "Negosiasi", "Active Listening"],
-    color: "border-t-magenta-500",
-  },
+    competencies: ["Komunikasi Interpersonal", "Presentasi Efektif", "Negosiasi", "Active Listening"] },
 ];
 
 export default function SertifikasiBNSP() {
@@ -32,89 +21,44 @@ export default function SertifikasiBNSP() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-hero-gradient bg-grid-pattern pt-36 pb-20 md:pt-44 md:pb-28">
-        <div className="mx-auto max-w-[1280px] px-6">
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-teal-100 text-xs font-semibold tracking-wider uppercase">
-              Sertifikasi
-            </span>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-gold-500/20 text-gold-500 text-xs font-semibold tracking-wider uppercase">
-              BNSP
-            </span>
-          </div>
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-3xl">
-            Sertifikasi Soft Skill Nasional BNSP
-          </h1>
-          <p className="mt-6 text-lg text-neutral-300 max-w-2xl leading-relaxed">
-            Pengakuan kompetensi resmi dari Badan Nasional Sertifikasi Profesi untuk profesional Indonesia.
-          </p>
-        </div>
-      </section>
+      <PageHero badge="Sertifikasi BNSP" title="Sertifikasi Soft Skill Nasional BNSP" subtitle="Pengakuan kompetensi resmi dari Badan Nasional Sertifikasi Profesi untuk profesional Indonesia.">
+        <span className="badge badge-gold mt-4">BNSP Certified</span>
+      </PageHero>
 
-      {/* Certification Schemes */}
       <Section>
-        <SectionHeader
-          badge="3 Skema"
-          title="Skema Sertifikasi"
-          subtitle="Tiga skema sertifikasi yang dirancang untuk meningkatkan kompetensi soft skill profesional."
-        />
-
-        <div ref={ref} className="animate-on-scroll grid md:grid-cols-3 gap-6 lg:gap-8">
+        <SectionHeader badge="3 Skema" title="Skema Sertifikasi" subtitle="Tiga skema sertifikasi yang dirancang untuk meningkatkan kompetensi soft skill profesional." />
+        <div ref={ref} className="animate-on-scroll grid md:grid-cols-3 gap-5">
           {schemas.map((s) => (
-            <div
-              key={s.id}
-              className={`rounded-2xl border border-neutral-200 ${s.color} border-t-4 bg-white p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
-            >
-              <div className="w-10 h-10 rounded-full bg-navy-500 text-white font-heading font-bold flex items-center justify-center mb-5">
-                {s.id}
-              </div>
-              <h3 className="font-heading text-xl font-bold text-navy-500 mb-3">
-                Skema {s.id}: {s.title}
-              </h3>
-              <p className="text-sm text-neutral-500 leading-relaxed mb-6">
-                {s.desc}
-              </p>
-
-              <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-                Unit Kompetensi
-              </h4>
-              <ul className="space-y-2 mb-6">
+            <div key={s.id} className={`card-base ${s.borderColor} border-t-[3px] hover:shadow-md hover:-translate-y-1 transition-all duration-200`}>
+              <div className="w-9 h-9 rounded-lg bg-navy-800 text-white font-bold flex items-center justify-center mb-4 text-[12px]" style={{ fontFamily: "var(--font-display)" }}>{s.id}</div>
+              <h3 className="text-[18px] font-semibold text-ink-900 mb-3" style={{ fontFamily: "var(--font-display)" }}>Skema {s.id}: {s.title}</h3>
+              <p className="text-[14px] text-ink-500 leading-relaxed mb-5">{s.desc}</p>
+              <h4 className="overline text-ink-300 mb-3">Unit Kompetensi</h4>
+              <ul className="space-y-2 mb-5">
                 {s.competencies.map((c) => (
-                  <li key={c} className="flex items-center gap-2 text-sm text-neutral-600">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0" />
-                    {c}
+                  <li key={c} className="flex items-center gap-2 text-[14px] text-ink-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600 shrink-0" />{c}
                   </li>
                 ))}
               </ul>
-
-              <a
-                href={`/kontak?topik=Sertifikasi BNSP - Skema ${s.id}: ${s.title}`}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-teal-500 hover:text-teal-700 transition-colors"
-              >
+              <a href={`/kontak?topik=Sertifikasi BNSP - Skema ${s.id}`} className="btn-ghost inline-flex items-center gap-1.5 text-[14px] font-semibold text-teal-600">
                 Tanyakan Sertifikasi Ini
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                </svg>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
               </a>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* SKKNI Reference */}
-      <section className="py-12 bg-neutral-50 border-y border-neutral-200/50">
-        <div className="mx-auto max-w-[1280px] px-6 text-center">
-          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-gold-50 flex items-center justify-center text-gold-500">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                <path d="M14 2v6h6" />
-              </svg>
+      <section className="py-10 bg-canvas-muted border-y border-border-subtle">
+        <div className="mx-auto max-w-[1200px] px-8 text-center">
+          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-xl bg-surface border border-border-subtle shadow-xs">
+            <div className="w-9 h-9 rounded-lg bg-gold-100 flex items-center justify-center text-gold-600">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><path d="M14 2v6h6" /></svg>
             </div>
             <div className="text-left">
-              <p className="font-heading font-bold text-navy-500 text-sm">Referensi SKKNI</p>
-              <p className="text-xs text-neutral-500">Beracuan SKKNI 2020-234 — Standar Kompetensi Kerja Nasional Indonesia</p>
+              <p className="text-[14px] font-semibold text-ink-900" style={{ fontFamily: "var(--font-display)" }}>Referensi SKKNI</p>
+              <p className="text-[13px] text-ink-500">Beracuan SKKNI 2020-234 — Standar Kompetensi Kerja Nasional Indonesia</p>
             </div>
           </div>
         </div>

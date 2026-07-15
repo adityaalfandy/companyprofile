@@ -1,15 +1,15 @@
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import StructuredData from "@/components/StructuredData";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700"],
 });
 
 const inter = Inter({
@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${plusJakartaSans.variable} ${inter.variable}`}
+      className={`${poppins.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col antialiased">
         <StructuredData />
