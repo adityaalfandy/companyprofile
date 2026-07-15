@@ -1,16 +1,37 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useAnimations";
+import Image from "next/image";
 
-const clients = [
-  "Kemenkes RI", "BNI", "LKPP", "OJK", "Pos Indonesia",
-  "Indosat Ooredoo Hutchison", "ITB", "UNPAD", "FTUI", "BNI Corporate University",
+const row1 = [
+  { name: "Kemenkes RI", logo: "/logos/kemenkes.png" },
+  { name: "BNI", logo: "/logos/bni.png" },
+  { name: "LKPP", logo: "/logos/lkpp.png" },
+  { name: "OJK", logo: "/logos/ojk.png" },
+  { name: "Pos Indonesia", logo: "/logos/posindonesia.png" },
 ];
 
-function ClientLogo({ name }) {
+const row2 = [
+  { name: "Indosat Ooredoo Hutchison", logo: "/logos/indosat.svg" },
+  { name: "ITB", logo: "/logos/itb.png" },
+  { name: "UNPAD", logo: "/logos/unpad.png" },
+  { name: "FTUI", logo: "/logos/ui.png" },
+  { name: "BNI Corporate University", logo: "/logos/bni.png" },
+];
+
+function ClientLogo({ name, logo }) {
   return (
-    <div className="flex items-center justify-center px-6 py-2.5 mx-2 rounded-lg bg-surface border border-border-subtle min-w-[160px] h-[48px] hover:shadow-sm hover:border-border-brand transition-all duration-200 group">
-      <span className="text-[13px] font-semibold text-ink-300 group-hover:text-ink-900 transition-colors duration-200 whitespace-nowrap" style={{ fontFamily: "var(--font-body)" }}>
+    <div className="flex flex-col items-center justify-center px-4 py-3 mx-2 rounded-lg bg-surface border border-border-subtle min-w-[200px] h-[100px] hover:shadow-sm hover:border-border-brand transition-all duration-200 group">
+      {logo && (
+        <div className="flex-1 w-full flex items-center justify-center mb-1">
+          <img
+            src={logo}
+            alt={`Logo ${name}`}
+            className="object-scale-down max-h-[48px] max-w-[140px] opacity-70 group-hover:opacity-100 transition-all duration-200 grayscale group-hover:grayscale-0 group-hover:scale-110"
+          />
+        </div>
+      )}
+      <span className="text-[12px] font-semibold text-ink-500 group-hover:text-ink-900 transition-colors duration-200 whitespace-nowrap text-center mt-auto" style={{ fontFamily: "var(--font-body)" }}>
         {name}
       </span>
     </div>
@@ -28,13 +49,18 @@ export default function ClientMarquee() {
         </p>
 
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-canvas-muted to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-canvas-muted to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-canvas-muted to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-canvas-muted to-transparent z-10 pointer-events-none" />
 
-          <div className="overflow-hidden">
+          <div className="overflow-hidden flex flex-col gap-4">
             <div className="marquee-track">
-              {[...clients, ...clients].map((name, i) => (
-                <ClientLogo key={`${name}-${i}`} name={name} />
+              {[...row1, ...row1, ...row1].map((client, i) => (
+                <ClientLogo key={`r1-${client.name}-${i}`} name={client.name} logo={client.logo} width={client.width} height={client.height} />
+              ))}
+            </div>
+            <div className="marquee-track" style={{ animationDirection: "reverse" }}>
+              {[...row2, ...row2, ...row2].map((client, i) => (
+                <ClientLogo key={`r2-${client.name}-${i}`} name={client.name} logo={client.logo} width={client.width} height={client.height} />
               ))}
             </div>
           </div>
