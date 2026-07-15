@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import StructuredData from "@/components/StructuredData";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
       className={`${plusJakartaSans.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col antialiased">
+        <StructuredData />
         <a href="#main-content" className="skip-to-content">
           Langsung ke konten utama
         </a>
