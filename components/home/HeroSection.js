@@ -4,11 +4,14 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center bg-hero-aurora bg-dot-grid overflow-hidden">
-      {/* Aurora glow orbs */}
-      <div className="absolute top-1/3 left-[15%] w-[600px] h-[600px] bg-teal-500/8 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-[20%] w-[400px] h-[400px] bg-magenta-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-accent/4 rounded-full blur-[180px] pointer-events-none" />
+    <section className="relative min-h-screen flex items-center bg-navy-900 overflow-hidden" style={{ backgroundImage: "url('/hero-bg.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      {/* Dark overlay to ensure text remains readable over the image */}
+      <div className="absolute inset-0 bg-navy-900/85 mix-blend-multiply z-0" />
+      
+      {/* Aurora glow orbs (kept for subtle accent) */}
+      <div className="absolute top-1/3 left-[15%] w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[150px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 right-[20%] w-[400px] h-[400px] bg-magenta-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-accent/5 rounded-full blur-[180px] pointer-events-none z-0" />
 
       <div className="relative mx-auto max-w-[1200px] px-8 py-32 md:py-40 z-10">
         {/* Overline eyebrow */}
@@ -21,12 +24,12 @@ export default function HeroSection() {
         {/* Letter-spaced signature headline */}
         <h1 className="mt-6 animate-[fadeUp_0.8s_var(--ease-out)_0.35s_both]">
           <span className="text-spaced-hero text-white text-[clamp(28px,5vw,56px)] leading-[1.1] block">
-            A G I L I T Y
+            AGILITY
           </span>
           <span className="text-spaced-hero text-[clamp(28px,5vw,56px)] leading-[1.1] block mt-1" style={{ fontFamily: "var(--font-display)" }}>
             <span className="text-white/60">&</span>{" "}
             <span className="bg-gradient-to-r from-teal-500 via-gold-500 to-magenta-500 bg-clip-text text-transparent">
-              T R A N S F O R M A T I O N
+              TRANSFORMATION
             </span>
           </span>
         </h1>
@@ -46,7 +49,7 @@ export default function HeroSection() {
               <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
             </svg>
           </Link>
-          <Link href="/framework" className="btn btn-secondary border-white/15 text-white/80 hover:bg-white/8 hover:border-white/25 hover:text-white px-8 py-3.5 text-[16px] w-full sm:w-auto">
+          <Link href="/framework" className="btn btn-secondary border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-8 py-3.5 text-[16px] w-full sm:w-auto">
             Lihat Framework Kami
           </Link>
         </div>
